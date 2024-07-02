@@ -26,6 +26,12 @@ img {
   vertical-align: middle;
 }
 
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
 body {
   background-color: var(--bg-color);
   padding: 20px;
