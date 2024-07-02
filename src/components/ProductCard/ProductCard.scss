@@ -1,6 +1,5 @@
 .product-card {
   background-color: #fff;
-  width: 415px;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -11,7 +10,7 @@
   -moz-box-shadow: 10px 10px 24px -12px rgba(0, 0, 0, 0.11);
 
   &-header {
-    max-height: 250px;
+    height: 250px;
     display: flex;
     position: relative;
   }
@@ -20,13 +19,25 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: var(--primary-pink);
+    background-color: var(--pink);
     padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     border-bottom-right-radius: 20px;
+
+    &.pink {
+      background-color: var(--pink);
+    }
+
+    &.blue {
+      background-color: var(--light-blue);
+    }
+
+    &.purple {
+      background-color: var(--purple);
+    }
   }
 
   &-body {
@@ -36,8 +47,9 @@
   &-badge-group {
     margin-top: 15px;
     gap: 20px;
-    display: flex;
     color: var(--gray-200);
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &-rating {
@@ -45,5 +57,9 @@
     align-items: center;
     justify-content: space-between;
     gap: 5px;
+  }
+
+  &-new {
+    color: var(--green);
   }
 }

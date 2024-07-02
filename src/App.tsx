@@ -1,16 +1,9 @@
-// import CategoriesBar from './components/CategoriesBar/CategoriesBar';
-import { useState } from 'react';
-import ProductCard from './components/ProductCard/ProductCard';
-import SearchBar from './components/SearchBar/SearchBar';
+import { Foods } from './pages';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
-
   return (
     <div>
-      <SearchBar value={searchQuery} onValueChange={setSearchQuery} />
-      {/* <CategoriesBar /> */}
-      <ProductCard />
+      <Foods />
     </div>
   );
 }

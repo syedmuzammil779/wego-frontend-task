@@ -4,9 +4,9 @@
   font-weight: 400;
   --primary: #ffc700;
   --light-blue: #06adfb;
-  --primary-pink: #ff6971;
-  --primary-purple: #8c63ff;
-  --primary-green: #4a9e87;
+  --pink: #ff6971;
+  --purple: #8c63ff;
+  --green: #4a9e87;
   --bg-color: #f6f7f9;
   --gray-100: #646567;
   --gray-200: #4e5355;
@@ -22,7 +22,7 @@
 
 body {
   background-color: var(--bg-color);
-  padding: 20px;
+  padding: 30px;
 }
 
 img {
