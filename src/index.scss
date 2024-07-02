@@ -20,6 +20,12 @@
   box-sizing: border-box;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 body {
   background-color: var(--bg-color);
   padding: 20px;
