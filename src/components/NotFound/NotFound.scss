@@ -13,9 +13,17 @@
   &-title {
     font-size: 40px;
     color: var(--gray-200);
+
+    @media screen and (max-width: 640px) {
+      font-size: 30px;
+    }
   }
 
   &-description {
     color: var(--gray-100);
+
+    @media screen and (max-width: 640px) {
+      font-size: 14px;
+    }
   }
 }

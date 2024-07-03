@@ -2,7 +2,7 @@ import { Foods } from './pages';
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Foods />
     </div>
   );
