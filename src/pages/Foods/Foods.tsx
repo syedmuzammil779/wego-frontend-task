@@ -7,6 +7,7 @@ import {
   ErrorPage,
   Loader,
   NotFound,
+  Pagination,
   ProductCard,
   SearchBar,
 } from '../../components';
@@ -26,6 +27,7 @@ interface Category {
 }
 
 const Foods = () => {
+  const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [foodData, setFoodData] = useState<Food[]>([]);
   const [filteredFoodData, setFilteredFoodData] = useState<Food[]>([]);
@@ -67,13 +69,26 @@ const Foods = () => {
   }, []);
 
   useEffect(() => {
-    const filtered =
-      activeCategory === '1zz4fg'
-        ? foodData
-        : foodData.filter((food) => food.categoryId === activeCategory);
+    const filterFoods = () => {
+      let filtered = foodData;
 
-    setFilteredFoodData(filtered);
-  }, [activeCategory, foodData]);
+      if (activeCategory !== '1zz4fg') {
+        filtered = filtered.filter(
+          (food) => food.categoryId === activeCategory,
+        );
+      }
+
+      if (searchQuery) {
+        filtered = filtered.filter((food) =>
+          food.name.toLowerCase().includes(searchQuery.toLowerCase()),
+        );
+      }
+
+      setFilteredFoodData(filtered);
+    };
+
+    filterFoods();
+  }, [activeCategory, searchQuery, foodData]);
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
@@ -82,10 +97,6 @@ const Foods = () => {
   const handleCategoryClick = (id: string) => {
     setActiveCategory(id);
   };
-
-  const filteredFoods = filteredFoodData.filter((food) =>
-    food.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
 
   if (loading) {
     return <Loader />;
@@ -105,14 +116,18 @@ const Foods = () => {
         onCategoryClick={handleCategoryClick}
       />
       <Divider padding="20px 0" />
-      {filteredFoods.length === 0 ? (
+      {filteredFoodData.length === 0 ? (
         <NotFound />
       ) : (
         <div className="foods-container">
-          {filteredFoods.slice(0, 10).map((food) => (
+          {filteredFoodData.slice(page * 10 - 10, page * 10).map((food) => (
             <ProductCard food={food} key={food.id} />
           ))}
         </div>
+      )}
+      <Divider padding="20px 0" />
+      {filteredFoodData.length > 0 && (
+        <Pagination products={filteredFoodData} page={page} setPage={setPage} />
       )}
     </div>
   );
