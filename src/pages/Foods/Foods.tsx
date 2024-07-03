@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Food } from '../../types/food';
-import { getFoodData } from '../../services/foodServices';
 
 // Components
 import {
   CategoriesBar,
   Divider,
+  ErrorPage,
+  Loader,
+  NotFound,
   ProductCard,
   SearchBar,
 } from '../../components';
+
+// Types
+import { Food } from '../../types/food';
+
+// Services
+import { getFoodData } from '../../services/foodServices';
 
 // Styles
 import './Foods.scss';
@@ -19,7 +26,9 @@ const Foods = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const someFoods = foodData.slice(0, 10);
+  const filteredFoods = foodData.filter((food) =>
+    food.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,25 +45,33 @@ const Foods = () => {
     fetchData();
   }, []);
 
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <ErrorPage />;
   }
 
   return (
     <div>
-      <SearchBar value={searchQuery} onValueChange={setSearchQuery} />
+      <SearchBar value={searchQuery} onValueChange={handleSearchChange} />
       <Divider padding="22px 0" />
       <CategoriesBar />
       <Divider padding="20px 0" />
-      <div className="foods-container">
-        {someFoods.map((food) => (
-          <ProductCard food={food} key={food.id} />
-        ))}
-      </div>
+      {filteredFoods.length === 0 ? (
+        <NotFound />
+      ) : (
+        <div className="foods-container">
+          {filteredFoods.slice(0, 10).map((food) => (
+            <ProductCard food={food} key={food.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
