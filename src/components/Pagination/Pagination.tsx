@@ -32,14 +32,15 @@ const Pagination = React.memo(
     );
 
     const PageButton = ({ pageNum }: { pageNum: number }) => (
-      <span
+      <button
+        data-testid="pagination-btn"
         onClick={() => selectPageHandler(pageNum)}
         className={`pagination-btn ${
           page === pageNum ? 'pagination-btn--active' : ''
         }`}
       >
         {pageNum}
-      </span>
+      </button>
     );
 
     const renderPageNumbers = useMemo(() => {
@@ -50,9 +51,9 @@ const Pagination = React.memo(
       if (leftDots) {
         pageNumbers.push(
           <PageButton key={1} pageNum={1} />,
-          <span key="left-dots" className="pagination-btn">
+          <button key="left-dots" className="pagination-btn">
             ...
-          </span>,
+          </button>,
         );
       }
 
@@ -67,9 +68,9 @@ const Pagination = React.memo(
 
       if (rightDots) {
         pageNumbers.push(
-          <span key="right-dots" className="pagination-btn">
+          <button key="right-dots" className="pagination-btn">
             ...
-          </span>,
+          </button>,
           <PageButton key={totalPages} pageNum={totalPages} />,
         );
       }
@@ -81,16 +82,21 @@ const Pagination = React.memo(
       <div>
         {products.length > 0 && (
           <div className="pagination">
-            <span
+            <button
+              disabled={page === 1}
+              role="button"
+              data-testid="pagination-prev"
               className={`pagination-btn ${
                 page > 1 ? 'pagination-prev' : 'pagination-btn--disabled'
               }`}
               onClick={() => selectPageHandler(page - 1)}
             >
               <FaChevronLeft />
-            </span>
+            </button>
             {renderPageNumbers}
-            <span
+            <button
+              data-testid="pagination-next"
+              disabled={page >= totalPages}
               className={`pagination-btn ${
                 page < totalPages
                   ? 'pagination-next'
@@ -99,7 +105,7 @@ const Pagination = React.memo(
               onClick={() => selectPageHandler(page + 1)}
             >
               <FaChevronRight />
-            </span>
+            </button>
           </div>
         )}
       </div>
