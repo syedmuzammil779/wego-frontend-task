@@ -1,24 +1,10 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useResponsiveIconSize } from '../../hooks';
 import './NotFound.scss';
 
-const NotFound = () => {
-  const [iconSize, setIconSize] = useState(200);
-
-  useEffect(() => {
-    const updateIconSize = () => {
-      if (window.innerWidth <= 768) {
-        setIconSize(100);
-      } else {
-        setIconSize(200);
-      }
-    };
-
-    updateIconSize();
-    window.addEventListener('resize', updateIconSize);
-
-    return () => window.removeEventListener('resize', updateIconSize);
-  }, []);
+const NotFound: React.FC = () => {
+  const iconSize: number = useResponsiveIconSize(200, 100);
 
   return (
     <div className="not-found">
