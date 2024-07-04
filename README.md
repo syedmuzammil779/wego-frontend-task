@@ -1,30 +1,63 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Wego Food Website
 
-Currently, two official plugins are available:
+This is a simple one page website that includes some E-commerce features.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Search by name
+- Filter by category
+- Pagination
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Tech Stack
+
+**Client:** React, TypeScript, SCSS, Vitest, React Testing Library
+
+
+## Demo
+Visit the live website:
+https://wego-food.netlify.app/
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/syedmuzammil779/wego-frontend-task.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Go to the project directory
+
+```bash
+  cd wego-frontend-task
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+To run tests in the browser, run the following command.
+```bash
+  npm run test:ui
+```
+## Badges
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b3a82f39-5cfa-4147-abae-ffe8e839018f/deploy-status)](https://app.netlify.com/sites/wego-food/deploys)
