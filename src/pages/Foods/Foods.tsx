@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 
 // Components
@@ -99,11 +100,11 @@ const Foods = () => {
   };
 
   if (loading) {
-    return <Loader />;
+    return <Loader data-testid="loader" />;
   }
 
   if (error) {
-    return <ErrorPage />;
+    return <ErrorPage data-testid="error page" />;
   }
 
   return (
@@ -117,7 +118,7 @@ const Foods = () => {
       />
       <Divider padding="20px 0" />
       {filteredFoodData.length === 0 ? (
-        <NotFound />
+        <NotFound data-testid="not-found" />
       ) : (
         <div className="foods-container">
           {filteredFoodData.slice(page * 10 - 10, page * 10).map((food) => (
