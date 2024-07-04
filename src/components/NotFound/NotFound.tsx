@@ -9,7 +9,7 @@ const NotFound: React.FC = () => {
   return (
     <div className="not-found">
       <span className="not-found-icon">
-        <FaSearch size={iconSize} />
+        <FaSearch size={iconSize} data-testid="search-icon" />
       </span>
       <h1 className="not-found-title">No results found</h1>
       <p className="not-found-description">
