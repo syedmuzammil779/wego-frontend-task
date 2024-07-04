@@ -1,11 +1,8 @@
+import React from 'react';
+import { Category } from '../../types/category';
+
 // Styles
 import './CategoriesBar.scss';
-
-interface Category {
-  id: string;
-  name: string;
-  active?: boolean;
-}
 
 interface CategoriesBarProps {
   categories: Category[];
@@ -18,6 +15,8 @@ const CategoriesBar: React.FC<CategoriesBarProps> = ({
   activeCategory,
   onCategoryClick,
 }) => {
+  if (categories.length === 0) return <p>No categories available.</p>;
+
   return (
     <div className="categories-bar">
       {categories.map((category) => (
