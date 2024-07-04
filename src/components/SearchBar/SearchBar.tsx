@@ -1,3 +1,5 @@
+import React from 'react';
+
 // icons
 import { IoSearch } from 'react-icons/io5';
 
