@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Badge from '../Badge/Badge';
 import { FaStar, FaGift } from 'react-icons/fa';
 import { AiOutlinePercentage } from 'react-icons/ai';
@@ -50,7 +51,7 @@ const ProductCard = React.memo(({ food }: ProductCardProps) => {
   return (
     <div className="product-card">
       <div className="product-card-header">
-        {!imageLoaded && <SkeletonLoader />}
+        {!imageLoaded && <SkeletonLoader data-testid="skeleton-loader" />}
         <img
           src={food.imageUrl || imageUrl}
           alt={food.name}
